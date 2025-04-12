@@ -9,7 +9,16 @@
 <p>{{task.due_to}}</p>
 
 <a href="{% url 'task-edit' task.pk%}"> Edit </a>
-<a href="#"> Delete </a>
-
+<a href="{% url 'task-delete' task.pk%}"> Delete </a>
+<hr>
+<ul>
+    {% for comment in task.comment_set.all %}
+        <li>
+            <p>{{comment.user}}</p>
+            <p>{{comment.content}}</p>
+            <p>--{{comment.created_at}}</p>
+        </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
