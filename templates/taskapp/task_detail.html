@@ -16,9 +16,19 @@
         <li>
             <p>{{comment.user}}</p>
             <p>{{comment.content}}</p>
+            <p><img alt="not loaded" src="{{comment.comment_pic.url}}" width="500px"></p>
+            {{comment.comment_pic.url}}
             <p>--{{comment.created_at}}</p>
         </li>
     {% endfor %}
 </ul>
-
+{% if user.is_authenticated %}
+<div>
+    <form method = "post" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{form}}
+        <input type="submit" value="send">
+    </form>
+</div>
+{% endif%}
 {% endblock %}

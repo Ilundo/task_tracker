@@ -12,4 +12,4 @@ urlpatterns = [
   path("task/create/",views.TaskCreateView.as_view(),name="task-create"),
   path("task/edit/<int:pk>",views.TaskEditView.as_view(),name="task-edit"),
   path("task/delete/<int:pk>", views.TaskDeleteView.as_view(),name="task-delete"),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

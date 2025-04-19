@@ -32,6 +32,9 @@ class Comment(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
     content = models.TextField()
+    comment_pic = models.ImageField(upload_to="comment_pics/",null=True,blank=True)
+    
     created_at = models.DateTimeField(auto_now_add=True)
     edited_at = models.DateField(null=True,auto_now=True)
