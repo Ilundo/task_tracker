@@ -14,3 +14,44 @@ h1, h2 {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+.task-list{
+    margin-left: 25%;
+}
+
+.task-li{
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.task-li a{
+    text-decoration: none;
+    color: black;
+}
+
+.task-li a:hover{
+    color: darkgray;
+}
+
+.task-list ul{
+    list-style-type: lower-alpha;
+}
+
+.task-desc{
+    margin-left: 25%;
+}
+.comments-list li{
+    border: 1px solid black;
+    width: 25%;
+    margin: 10px;
+    border-radius: 15px;
+    padding: 5px;
+}
+.comment-date{
+    text-align: right;
+    font-size: small;
+    color: rgb(46, 46, 46);
+}
+.comment-text{
+    font-size: larger;
+    text-align: center;
+}

@@ -6,5 +6,7 @@
     {%csrf_token%}
     {{form.as_p}}
     <input type="submit" value ="Log in">
+    <p>Не маєте акаунта? <a href="{% url 'register' %}">Зареєструватися</a></p>
 </form>
+
 {% endblock %}

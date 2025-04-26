@@ -1,24 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="task-desc">
+    <h4>{{task.title}}</h4>
+    <p>{{task.description}}</p>
+    <p>{{task.status}}</p>
+    <p>{{task.priority}}</p>
+    <p>{{task.due_to}}</p>
 
-<h4>{{task.title}}</h4>
-<p>{{task.description}}</p>
-<p>{{task.status}}</p>
-<p>{{task.priority}}</p>
-<p>{{task.due_to}}</p>
-
-<a href="{% url 'task-edit' task.pk%}"> Edit </a>
-<a href="{% url 'task-delete' task.pk%}"> Delete </a>
+    <a class="btn btn-warning" href="{% url 'task-edit' task.pk%}"> Edit </a>
+    <a class="btn btn-danger" href="{% url 'task-delete' task.pk%}"> Delete </a>
+</div>
 <hr>
-<ul>
+<ul class="comments-list">
     {% for comment in task.comment_set.all %}
         <li>
             <p>{{comment.user}}</p>
-            <p>{{comment.content}}</p>
-            <p><img alt="not loaded" src="{{comment.comment_pic.url}}" width="500px"></p>
-            {{comment.comment_pic.url}}
-            <p>--{{comment.created_at}}</p>
+            <p class="comment-text">{{comment.content}}</p>
+            {% if comment.comment_pic %}
+                <p><img alt="not loaded" src="{{comment.comment_pic.url}}" width="500px"></p>
+            {% endif %}
+            <p class="comment-date">--{{comment.created_at}}</p>
         </li>
     {% endfor %}
 </ul>

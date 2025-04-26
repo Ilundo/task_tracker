@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
+from django.views import generic
 
 from .models import Task,Comment
 from .forms import CommentForm, TaskForm
@@ -52,6 +54,11 @@ class TaskCreateView(LoginRequiredMixin,CreateView ):
         form.instance.user = user
 
         return super().form_valid(form)
+
+class RegisterView(generic.CreateView):
+    form_class = UserCreationForm
+    template_name = 'registration/register.html'
+    success_url = reverse_lazy('login')
 
 class TaskEditView(UserIsOwnerMixin,UpdateView):
     model = Task
