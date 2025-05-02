@@ -1,35 +1,51 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="task-desc">
-    <h4>{{task.title}}</h4>
-    <p>{{task.description}}</p>
-    <p>{{task.status}}</p>
-    <p>{{task.priority}}</p>
-    <p>{{task.due_to}}</p>
+<div class="container">
+    <div class="task-desc">
+        <h4>{{ task.title }}</h4>
+        <p><strong>Опис:</strong> {{ task.description }}</p>
+        <p><strong>Статус:</strong> {{ task.status }}</p>
+        <p><strong>Пріоритет:</strong> {{ task.priority }}</p>
+        <p><strong>Термін:</strong> {{ task.due_to }}</p>
 
-    <a class="btn btn-warning" href="{% url 'task-edit' task.pk%}"> Edit </a>
-    <a class="btn btn-danger" href="{% url 'task-delete' task.pk%}"> Delete </a>
-</div>
-<hr>
-<ul class="comments-list">
-    {% for comment in task.comment_set.all %}
-        <li>
-            <p>{{comment.user}}</p>
-            <p class="comment-text">{{comment.content}}</p>
-            {% if comment.comment_pic %}
-                <p><img alt="not loaded" src="{{comment.comment_pic.url}}" width="500px"></p>
-            {% endif %}
-            <p class="comment-date">--{{comment.created_at}}</p>
-        </li>
-    {% endfor %}
-</ul>
-{% if user.is_authenticated %}
-<div>
-    <form method = "post" enctype="multipart/form-data">
-        {%csrf_token%}
-        {{form}}
-        <input type="submit" value="send">
-    </form>
+        <a class="btn btn-warning" href="{% url 'task-edit' task.pk %}">Редагувати</a>
+        <a class="btn btn-danger" href="{% url 'task-delete' task.pk %}">Видалити</a>
+    </div>
+
+    <hr>
+
+    <h5>Коментарі:</h5>
+    <ul class="comments-list">
+        {% for comment in task.comment_set.all %}
+            <li>
+                <p><strong>{{ comment.user }}</strong></p>
+                <p class="comment-text">{{ comment.content }}</p>
+                {% if comment.comment_pic %}
+                    <p><img alt="not loaded" src="{{ comment.comment_pic.url }}" width="100%" style="max-width: 350px;"></p>
+                {% endif %}
+                <p class="comment-date">— {{ comment.created_at }}</p>
+            </li>
+        {% empty %}
+            <li><p>Немає коментарів до цього завдання.</p></li>
+        {% endfor %}
+    </ul>
+
+    {% if user.is_authenticated %}
+        <h5>Залишити коментар:</h5>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="id_content">Текст коментаря:</label>
+            {{ form.content }}
+            
+            <label for="id_comment_pic">Додати зображення (необов'язково):</label>
+            {{ form.comment_pic }}
+
+            <br>
+            <input type="submit" value="send">
+        </form>
+    {% else %}
+        <p>Увійдіть, щоб залишити коментар.</p>
+    {% endif %}
 </div>
 {% endblock %}

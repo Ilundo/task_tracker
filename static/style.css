@@ -1,57 +1,122 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
 }
 
-h1, h2 {
-    color: #333;
-}
-
-.card {
-    background-color: white;
+.container {
+    max-width: 800px;
+    margin: 30px auto;
     padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.task-list{
-    margin-left: 25%;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.task-li{
-    margin-top: 5px;
+h1, h2, h4 {
+    color: #333;
     margin-bottom: 15px;
 }
 
-.task-li a{
+.task-desc {
+    margin-bottom: 20px;
+}
+
+.task-desc p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #444;
+}
+
+.btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
     text-decoration: none;
-    color: black;
 }
 
-.task-li a:hover{
-    color: darkgray;
+.btn-warning {
+    background-color: #ffc107;
 }
 
-.task-list ul{
-    list-style-type: lower-alpha;
+.btn-danger {
+    background-color: #dc3545;
 }
 
-.task-desc{
-    margin-left: 25%;
+.btn-warning:hover {
+    background-color: #e0a800;
 }
-.comments-list li{
-    border: 1px solid black;
-    width: 25%;
-    margin: 10px;
-    border-radius: 15px;
-    padding: 5px;
+
+.btn-danger:hover {
+    background-color: #c82333;
 }
-.comment-date{
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comments-list li {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.comments-list li:hover {
+    transform: scale(1.01);
+}
+
+.comment-text {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.comment-date {
     text-align: right;
     font-size: small;
     color: rgb(46, 46, 46);
 }
-.comment-text{
-    font-size: larger;
-    text-align: center;
+
+form {
+    margin-top: 30px;
+}
+
+form textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+form input[type="file"] {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
 }
