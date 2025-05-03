@@ -11,10 +11,10 @@ body {
     padding: 20px;
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2, h4 {
+h4 {
     color: #333;
     margin-bottom: 15px;
 }
@@ -119,4 +119,17 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+.plain-text {
+    color: black !important;
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+.comment-img {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 10px auto;
 }

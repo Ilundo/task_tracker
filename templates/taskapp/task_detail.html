@@ -19,12 +19,12 @@
     <ul class="comments-list">
         {% for comment in task.comment_set.all %}
             <li>
-                <p><strong>{{ comment.user }}</strong></p>
-                <p class="comment-text">{{ comment.content }}</p>
+                <p><strong class="plain-text">{{ comment.user }}</strong></p>
+                <p class="comment-text plain-text">{{ comment.content }}</p>
                 {% if comment.comment_pic %}
-                    <p><img alt="not loaded" src="{{ comment.comment_pic.url }}" width="100%" style="max-width: 350px;"></p>
+                    <p><img src="{{ comment.comment_pic.url }}" alt="not loaded" class="comment-img" width="350px"></p>
                 {% endif %}
-                <p class="comment-date">— {{ comment.created_at }}</p>
+                <p class="comment-date plain-text">— {{ comment.created_at }}</p>
             </li>
         {% empty %}
             <li><p>Немає коментарів до цього завдання.</p></li>
@@ -35,12 +35,8 @@
         <h5>Залишити коментар:</h5>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="id_content">Текст коментаря:</label>
-            {{ form.content }}
-            
-            <label for="id_comment_pic">Додати зображення (необов'язково):</label>
-            {{ form.comment_pic }}
-
+            {{ form.content.label_tag }} {{ form.content }}
+            {{ form.comment_pic.label_tag }} {{ form.comment_pic }}
             <br>
             <input type="submit" value="send">
         </form>
