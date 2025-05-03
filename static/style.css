@@ -121,12 +121,6 @@ form input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-.plain-text {
-    color: black !important;
-    text-decoration: none !important;
-    outline: none !important;
-}
-
 .comment-img {
     width: 100%;
     max-width: 350px;
